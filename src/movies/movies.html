@@ -1,0 +1,36 @@
+<template>
+    <header class="header">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Movies</h1>
+            </div>
+        </div>
+    </header>
+    <main class="main-content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="search_query">Search for:</label>
+                    <input type="text" class="form-control" value.bind="searchQuery">
+                    <input type="button" class="btn btn-primary" value="Search" click.delegate="getMovies()">
+                </div>
+            </div>
+        </div>
+
+        <section class="movies-results">
+            <div class="loader" if.bind="isLoading">
+                <img src="images/loading.gif" alt="" class="loader__img">
+            </div>
+            <ul class="list list-unstyled movies-results__list">
+                <li class="movies-results__movie card" repeat.for="movie of movies">
+                    <a href.bind="movie.detailUrl">
+                        <img src="${movie.Poster}" alt="" class="card-img-top">
+                        <div class="card-block">
+                            <h4 class="card-title">${movie.Title}</h4>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </section>
+    </main>
+</template>
